@@ -1,0 +1,52 @@
+{% extends 'Haircoot/base.html' %}
+{% load static %}
+{% block content %}
+
+{% if messages %}
+<h3 style="color: red">
+   {% for message in messages %}
+	   {{ message }}
+   {% endfor %}
+</h3>
+{% endif %}
+
+ <div class="container text-white">
+
+    <h3 class="display-4">Dodawanie nowych usług</h3>
+    <p class="lead">Wypełnij proszę wszystkie pola.</p>
+    <hr class="my-4">
+
+{% if message.tags == 'success' %}
+    <div class="alert alert-success" role="alert">
+    {{ message }}
+    </div>
+    {% endif %}
+
+    {% if message.tags == 'error' %}
+<div class="alert alert-danger" role="alert">
+    {{ message }}
+</div>
+{% endif %}
+
+<ul >
+
+<form action="{% url 'newservice' %}" method="post">
+    <table cellpadding="5px">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <tr><td height="10px"></td></tr>
+
+
+
+    </table>
+    <input type="submit" type="button" class="btn btn-blue btn-primary " value="Dodaj usługę">
+</form>
+
+</ul>
+
+
+   </div>
+  <!-- /.container -->
+
+
+{% endblock %}

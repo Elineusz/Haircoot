@@ -1,0 +1,27 @@
+{% extends 'Haircoot/base.html' %}
+{% load static %}
+{% load duration %}
+{% block content %}
+
+
+
+
+    <h2 class="display-4">Spis naszych usług</h2>
+
+    {% for service in services_list %}
+        <h3 class="display-6">
+           {{ service.service_name }}
+        </h3>
+        <p>
+            {{ service.service_detailed }}
+        </p>
+        <p>
+            Czas wykonania usługi {{ service.service_duration|duration }}<br>
+            Cena usługi {{ service.service_price|floatformat:2 }} zł
+        </p>
+
+    {% endfor %}
+
+
+
+{% endblock %}

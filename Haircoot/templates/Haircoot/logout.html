@@ -1,0 +1,18 @@
+{% extends 'Haircoot/accout.base.html' %}
+{% load static %}
+{% block content %}
+<div class="container text-white", style="text-align: center">
+   <div> Dziękujemy za wizytę w naszym salonie.</div>
+    <div style="height: 40px"></div>
+    <div>Za chwilkę przeglądarka przekieruje Cię na stronę główną salonu. <br>
+        Jeśli przekierowanie nie nastąpiło <a href="{% url 'index' %}" >kliknij tutaj</a>
+    </div>
+</div>
+
+<script>
+       setTimeout(function(){
+            window.location.href = '{% url 'index' %}';
+         }, 5000);
+</script>
+
+{% endblock %}

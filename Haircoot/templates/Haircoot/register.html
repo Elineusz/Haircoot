@@ -1,0 +1,51 @@
+{% extends 'Haircoot/accout.base.html' %}
+{% load static %}
+{% block content %}
+
+{% if messages %}
+    <h3 style="color: red">
+    {% for message in messages %}
+	   {{ message }}
+    {% endfor %}
+    </h3>
+{% endif %}
+
+ <div class="container text-white">
+
+    <h3 class="display-4">Rejestracja</h3>
+    <p class="lead">Witaj na naszej stronie. Załóż konto aby móc dokonywać rezerwacji.</p>
+    <hr class="my-4">
+
+{% if message.tags == 'success' %}
+    <div class="alert alert-success" role="alert">
+    {{ message }}
+    </div>
+    {% endif %}
+
+    {% if message.tags == 'error' %}
+<div class="alert alert-danger" role="alert">
+    {{ message }}
+</div>
+{% endif %}
+
+<ul >
+
+<form action="{% url 'register' %}" method="post">
+    <table cellpadding="5px">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <tr><td height="10px"></td></tr>
+    <tr><td> Zapoznanełem się i akcjeptuję <a href="{% url 'regulation' %}">regulamin</a>  oraz <a href="{% url 'policy' %}">politykę prywatności</a> </td></tr>
+
+
+    </table>
+    <input type="submit" type="button" class="btn btn-blue btn-primary " value="Zarejestruj">
+</form>
+
+</ul>
+
+
+   </div>
+  <!-- /.container -->
+
+{% endblock %}
