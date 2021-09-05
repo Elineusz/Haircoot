@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import SelectDateWidget
-
+from models import Service, User
 
 class LoginForm(forms.Form):
     username = forms.CharField(label='Nazwa użytkownika')
@@ -24,5 +24,8 @@ class NewService(forms.Form):
 
 
 class Reservation(forms.Form):
-    service = forms.CharField(label='Usługa')
+    service = forms.ModelChoiceField(label='Usługa', queryset=Service.objects.all())
+    employee = forms.ModelChoiceField(label='Pracownik', queryset=User.objects.filter(is_staff=1))
 
+class OneTimeReservation(forms.Form):
+    service = forms.CharField(label='Usługa')
